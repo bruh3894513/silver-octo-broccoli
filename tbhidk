@@ -1,0 +1,39 @@
+local position = UDim2.new(0.5, 0, 0.5, 0)
+local size = UDim2.new(0, 200, 0, 50)
+local gui = Instance.new("ScreenGui")
+gui.Name = "whatudoinghere"
+gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+local whatudoinghere = Instance.new("ImageLabel")
+whatudoinghere.Name = "whatudoinghere"
+whatudoinghere.Size = size
+whatudoinghere.Position = position
+whatudoinghere.BackgroundTransparency = 1
+whatudoinghere.Image = "rbxassetid://14229895933"
+whatudoinghere.Parent = gui
+local textLabel = Instance.new("TextLabel")
+textLabel.Name = "Text"
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.BackgroundTransparency = 1
+textLabel.Text = "ice spice roblox hack by coolpro1"
+textLabel.Font = Enum.Font.SourceSansBold
+textLabel.TextSize = 20
+textLabel.TextColor3 = Color3.new(1, 1, 1)
+textLabel.Parent = whatudoinghere
+local function animateRainbow()
+    local hue = 0
+    while true do
+        hue = (hue + 0.01) % 1
+        local rainbowColor = Color3.fromHSV(hue, 1, 1)
+        textLabel.TextColor3 = rainbowColor
+        wait(0.05)
+    end
+end
+coroutine.wrap(animateRainbow)()
+-- ZIndex
+whatudoinghere.ZIndex = 10
+game:GetService("GuiService").Changed:Connect(function(property)
+    if property == "AbsoluteSize" then
+        whatudoinghere.Position = position
+        whatudoinghere.Size = size
+    end
+end)
